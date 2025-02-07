@@ -1,0 +1,72 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "name": "vasms",
+            "code": "100",
+            "summaryPlaned": "250",
+            "summaryFact": "200",
+            "startDate": "2025-01-05",
+            "deadline": "2025-02-05",
+            "releaseDate": "2025-02-06",
+            "version": "1.00"
+        },
+        {
+            "id": 2,
+            "name": "crm-system",
+            "code": "101",
+            "summaryPlaned": "300",
+            "summaryFact": "280",
+            "startDate": "2025-01-10",
+            "deadline": "2025-03-01",
+            "releaseDate": "2025-03-05",
+            "version": "2.10"
+        },
+        {
+            "id": 3,
+            "name": "billing-service",
+            "code": "102",
+            "summaryPlaned": "150",
+            "summaryFact": "140",
+            "startDate": "2025-02-01",
+            "deadline": "2025-04-01",
+            "releaseDate": "2025-04-10",
+            "version": "3.05"
+        },
+        {
+            "id": 4,
+            "name": "analytics-tool",
+            "code": "103",
+            "summaryPlaned": "500",
+            "summaryFact": "450",
+            "startDate": "2025-03-01",
+            "deadline": "2025-05-15",
+            "releaseDate": "2025-05-20",
+            "version": "4.20"
+        },
+        {
+            "id": 5,
+            "name": "support-platform",
+            "code": "104",
+            "summaryPlaned": "200",
+            "summaryFact": "190",
+            "startDate": "2025-02-15",
+            "deadline": "2025-04-10",
+            "releaseDate": "2025-04-15",
+            "version": "1.50"
+        },
+        {
+            "id": 6,
+            "name": "mobile-app",
+            "code": "105",
+            "summaryPlaned": "350",
+            "summaryFact": "320",
+            "startDate": "2025-01-20",
+            "deadline": "2025-03-30",
+            "releaseDate": "2025-04-05",
+            "version": "2.30"
+        }
+    ],
+    "EMUL": "",
+    "status": 1
+}
