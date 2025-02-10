@@ -51,7 +51,7 @@ const clearSearch = () => {
 <template>
   <AppLayout>
     <div class="flex flex-col w-full bg-gray-100">
-      <div class="bg-sky-300 shadow-md rounded-lg p-6 w-full flex flex-col flex-1">
+      <div class="bg-red-300 shadow-md rounded-lg p-6 w-full flex flex-col flex-1">
 
         <div class="flex justify-between items-center mb-4">
           <h2 class="text-xl font-bold text-gray-800">Список проектов</h2>
