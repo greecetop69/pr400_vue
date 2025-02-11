@@ -1,19 +1,24 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import ProjectsResult from '../views/ProjectsPage.vue'
+import ProjectsPage from '@/views/ProjectsPage.vue'
 import UsersPage from '@/views/UsersPage.vue'
+import LoginPage from '@/views/LoginPage.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes: [
     {
       path: '/',
-      name: 'index',
-      component: ProjectsResult,
+      redirect: '/login',
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: LoginPage,
     },
     {
       path: '/projects',
       name: 'projects',
-      component: ProjectsResult,
+      component: ProjectsPage,
     },
     {
       path: '/users',

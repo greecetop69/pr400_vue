@@ -1,54 +1,104 @@
+<script setup>
+import { inject } from "vue";
+import { useRouter } from "vue-router";
+import AuthService from "@/services/AuthService";
+
+const router = useRouter();
+const userID = inject("userID");
+const setUserID = inject("setUserID");
+
+const handleLogout = async () => {
+    try {
+        if (userID.value) {
+            const response = await AuthService.logout(Number(userID.value));
+            if (response) {
+                localStorage.removeItem("userID");
+                setUserID(null);
+                router.push("/login");
+            }
+        }
+    } catch (error) {
+        console.error("Logout error:", error.message);
+    }
+};
+</script>
+
 <template>
-  <div class="layout">
-    <header class="header">
-      <div class="header-container">
-        <h1 class="logo">DPM</h1>
-      </div>
+    <div class="layout">
+        <header class="header">
+            <div class="header-container">
+                <h1 class="logo">DPM</h1>
+            </div>
 
-      <nav class="tabs">
-        <RouterLink to="/projects" class="tab" active-class="active-tab">Проекты</RouterLink>
-        <RouterLink to="/users" class="tab" active-class="active-tab">Пользователи</RouterLink>
-      </nav>
-    </header>
+            <nav class="tabs">
+                <RouterLink to="/projects" class="tab" active-class="active-tab">Проекты</RouterLink>
+                <RouterLink to="/users" class="tab" active-class="active-tab">Пользователи</RouterLink>
+            </nav>
 
-    <main class="main-content">
-      <slot />
-    </main>
-  </div>
+            <button @click="handleLogout" class="logout-button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="logout-icon">
+                    <path d="M2.00098 11.999L16.001 11.999M16.001 11.999L12.501 8.99902M16.001 11.999L12.501 14.999"
+                        stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path
+                        d="M9.00195 7C9.01406 4.82497 9.11051 3.64706 9.87889 2.87868C10.7576 2 12.1718 2 15.0002 2L16.0002 2C18.8286 2 20.2429 2 21.1215 2.87868C22.0002 3.75736 22.0002 5.17157 22.0002 8L22.0002 16C22.0002 18.8284 22.0002 20.2426 21.1215 21.1213C20.3531 21.8897 19.1752 21.9862 17 21.9983M9.00195 17C9.01406 19.175 9.11051 20.3529 9.87889 21.1213C10.5202 21.7626 11.4467 21.9359 13 21.9827"
+                        stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+            </button>
+        </header>
+
+        <main class="main-content">
+            <slot />
+        </main>
+    </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .layout {
-  @apply flex flex-col h-screen overflow-hidden bg-gray-100;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
 .header {
-  background: linear-gradient(240deg, #ebedfd, #f8f1fc);
-  @apply backdrop-blur-lg pb-0;
-}
-
-.header-container {
-  @apply flex items-center px-5 py-4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #2c3e50;
+    color: white;
+    padding: 15px;
 }
 
 .logo {
-  @apply text-xl font-bold text-[#0e1726];
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .tabs {
-  background: linear-gradient(240deg, #ebedfd, #f8f1fc);
-  @apply flex border-t border-gray-300 space-x-2 px-5 py-2 border-b shadow-sm;
+    display: flex;
+    gap: 20px;
 }
 
 .tab {
-  @apply text-[#0e1726] text-sm font-medium px-4 py-1.5 rounded-lg transition-all duration-200 hover:bg-[#d9dbe9];
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
 }
 
 .active-tab {
-  @apply font-semibold text-[#333] bg-[#d9dbe9];
+    font-weight: bold;
+    border-bottom: 2px solid white;
 }
 
-.main-content {
-  @apply flex-grow overflow-auto p-6;
+.logout-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.logout-icon {
+    width: 24px;
+    height: 24px;
+    filter: invert(1);
 }
 </style>
